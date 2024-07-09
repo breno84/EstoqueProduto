@@ -14,12 +14,15 @@ public class Produto {
 
     private String nome;
     private Double preco;
-    private Double valor;
+    private Integer quantidade;
 
-    public Produto(String nome, Double preco, Double valor) {
+    public Produto() {
+    }
+
+    public Produto(String nome, Double preco, Integer quantidade) {
         this.nome = nome;
         this.preco = preco;
-        this.valor = valor;
+        this.quantidade = quantidade;
     }
 
     public long getId() {
@@ -46,11 +49,11 @@ public class Produto {
         this.preco = preco;
     }
 
-    public Double getValor() {
-        return valor;
+    public Integer getQuantidade() {
+        return quantidade;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 }
