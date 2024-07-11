@@ -17,6 +17,7 @@ public class Produto {
     private String nome;
     private Double preco;
     private Integer quantidade;
+    private String tamanho;
 
     public Produto() {
     }
@@ -57,5 +58,13 @@ public class Produto {
     @NotNull
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
     }
 }

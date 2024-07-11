@@ -33,8 +33,10 @@ public class ProdutoService {
         return  produtoRepository.save(produto);
     }
 
-    public void deleteProduto(Long id){
+    public Produto deleteProduto(Long id){
+        Produto produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         produtoRepository.deleteById(id);
+        return produto;
     }
 
     public Produto subtrairQtdProduot(Long id, Integer qtd){
