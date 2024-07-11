@@ -35,4 +35,14 @@ public class ProdutoController {
     public void deleteProduto(@PathVariable Long id){
             produtoService.deleteProduto(id);
     }
+
+    @PostMapping("/subtrair")
+    public Produto subtrairQtdProduot(@RequestBody Produto produto){
+        return produtoService.subtrairQtdProduot(produto.getId(),produto.getQuantidade());
+    }
+
+    @PostMapping("/somar")
+    public Produto aumentarQtdProduot(@RequestBody Produto produto){
+        return produtoService.aumentarQtdProduot(produto.getId(),produto.getQuantidade());
+    }
 }

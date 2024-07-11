@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.jetbrains.annotations.NotNull;
+
 
 @Entity
 public class Produto {
@@ -52,7 +54,7 @@ public class Produto {
     public Integer getQuantidade() {
         return quantidade;
     }
-
+    @NotNull
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
