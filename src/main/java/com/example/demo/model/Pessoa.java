@@ -1,10 +1,8 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
-
 
 @Entity
 public class Pessoa {
@@ -13,23 +11,21 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    private String cpf_cnpj;
-
+    private String cpfCnpj;
     private String nome;
     private Double preco;
     private Integer quantidade;
     private Date dataVenda;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idProduto", nullable = false)
     private Produto produto;
 
-    public Pessoa() {
-    }
 
-    public Pessoa(String cpf_cnpj, String nome, Double preco, Integer quantidade, Produto produto,Date dataVenda) {
-        this.cpf_cnpj = cpf_cnpj;
+    public Pessoa() {}
+
+    public Pessoa(String cpf_cnpj, String nome, Double preco, Integer quantidade, Produto produto, Date dataVenda) {
+        this.cpfCnpj = cpf_cnpj;
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
@@ -45,12 +41,12 @@ public class Pessoa {
         this.id = id;
     }
 
-    public void setCpf_cnpj(String cpf_cnpj) {
-        this.cpf_cnpj = cpf_cnpj;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public String getCpf_cnpj() {
-        return cpf_cnpj;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
     public String getNome() {
@@ -72,7 +68,7 @@ public class Pessoa {
     public Integer getQuantidade() {
         return quantidade;
     }
-    @NotNull
+
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
@@ -81,7 +77,6 @@ public class Pessoa {
         return produto;
     }
 
-    @NotNull
     public void setProduto(Produto produto) {
         this.produto = produto;
     }

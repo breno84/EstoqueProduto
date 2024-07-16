@@ -58,11 +58,19 @@ public class PessoaController {
                     @ApiResponse(responseCode = "200", description = "Deletado com sucesso"),
                     @ApiResponse(responseCode = "500", description = "Pessoa não encontrado")
             })
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteProduto(@PathVariable Long id){
         pessoaService.deleteProduto(id);
             return "Deletado com sucesso";
     }
 
+    @Operation(summary = "Lista todos as pessoas pelo CPF/CNPJ",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Listado com sucesso")
+            })
+    @GetMapping("/listaCpfCnpj")
+    public List<Pessoa> getAllVendasCpfCnpj(@RequestParam String cpfCnpj){
+        return pessoaService.findByCpf_cnpj(cpfCnpj);
+    }
 
 }

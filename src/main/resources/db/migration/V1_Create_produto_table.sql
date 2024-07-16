@@ -11,3 +11,4 @@ add tamanho varchar(55);
 ALTER TABLE pessoa
 add dataVenda date;
 
+
