@@ -21,46 +21,46 @@ public class PessoaController {
     @Autowired
     private PessoaService pessoaService;
 
-    @Operation(summary = "Lista todos os produtos",
+    @Operation(summary = "Lista todas as vendas",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Listado com sucesso")
             })
     @GetMapping
-    public List<Pessoa> getAllProdutos(){
-        return pessoaService.getAllProdutos();
+    public List<Pessoa> getAllVendas(){
+        return pessoaService.getAllVendas();
     }
 
-    @Operation(summary = "Lista produto pelo ID",
+    @Operation(summary = "Lista vendas pelo ID",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Listado com sucesso"),
                     @ApiResponse(responseCode = "400", description = "Json Incoretod")
             })
     @GetMapping("/{id}")
-    public Optional<Pessoa> getProdutoById(@PathVariable Long id){
-        return pessoaService.getProdutoById(id);
+    public Optional<Pessoa> getVendasById(@PathVariable Long id){
+        return pessoaService.getPessoById(id);
     }
 
-    @Operation(summary = "Criacao de produto",
+    @Operation(summary = "Criacao de vendas",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "produto criado com sucesso"),
+                    @ApiResponse(responseCode = "200", description = "venda criado com sucesso"),
                     @ApiResponse(responseCode = "400", description = "Json Incorreto",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = Produto.class))),
-                    @ApiResponse(responseCode = "500", description = "Produto não encontrado")
+                    @ApiResponse(responseCode = "500", description = "venda não encontrado")
             })
     @PostMapping("/create")
-    public Pessoa createProduto(@RequestBody Pessoa pessoa){
-        return pessoaService.createProduto(pessoa);
+    public Pessoa createPessoa(@RequestBody Pessoa pessoa){
+        return pessoaService.createVenda(pessoa);
     }
 
-    @Operation(summary = "Deletando produto pelo ID",
+    @Operation(summary = "Deletando venda pelo ID",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Deletado com sucesso"),
                     @ApiResponse(responseCode = "500", description = "Pessoa não encontrado")
             })
     @DeleteMapping("/delete/{id}")
-    public String deleteProduto(@PathVariable Long id){
-        pessoaService.deleteProduto(id);
+    public String deletePessoa(@PathVariable Long id){
+        pessoaService.deletePessoa(id);
             return "Deletado com sucesso";
     }
 

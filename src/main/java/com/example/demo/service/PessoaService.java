@@ -25,16 +25,16 @@ public class PessoaService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public List<Pessoa> getAllProdutos(){
+    public List<Pessoa> getAllVendas(){
         return pessoaRepository.findAll();
     }
 
-    public Optional<Pessoa> getProdutoById(Long id){
+    public Optional<Pessoa> getPessoById(Long id){
         return pessoaRepository.findById(id);
     }
 
     @Transactional
-    public Pessoa createProduto(Pessoa pessoa){
+    public Pessoa createVenda(Pessoa pessoa){
         int qtdVendida = pessoa.getQuantidade();
         Produto produto = produtoRepository.findById(pessoa.getProduto().getId()).
                 orElseThrow(() -> new RuntimeException("Produto não encontrado"));
@@ -47,7 +47,7 @@ public class PessoaService {
         return  pessoaRepository.saveAndFlush(pessoa);
     }
 
-    public Pessoa deleteProduto(Long id){
+    public Pessoa deletePessoa(Long id){
         Pessoa pessoa = pessoaRepository.findById(id).
                 orElseThrow(() -> new RuntimeException("Pessoa não encontrado"));
         pessoaRepository.deleteById(id);
