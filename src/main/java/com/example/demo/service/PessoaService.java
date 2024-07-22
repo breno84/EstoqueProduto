@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
@@ -26,7 +27,7 @@ public class PessoaService {
     private ProdutoRepository produtoRepository;
 
     public List<Pessoa> getAllVendas(){
-        return pessoaRepository.findAll();
+        return pessoaRepository.findAllByOrderByIdDesc();
     }
 
     public Optional<Pessoa> getPessoById(Long id){
