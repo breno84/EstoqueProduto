@@ -59,4 +59,12 @@ public class PessoaService {
         return pessoaRepository.findBycpfCnpj(cpfCnpj);
     }
 
+    public Pessoa editVenda(Pessoa pessoa){
+        pessoaRepository.saveAndFlush(pessoa);
+
+        Pessoa pessoa1 = pessoaRepository.findById(pessoa.getId()).
+                orElseThrow(() -> new RuntimeException("Pessoa não encontrado"));
+
+        return pessoa1;
+    }
 }

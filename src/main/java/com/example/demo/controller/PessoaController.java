@@ -73,4 +73,16 @@ public class PessoaController {
         return pessoaService.findByCpf_cnpj(cpfCnpj);
     }
 
+    @Operation(summary = "edicao de vendas",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "editado com sucesso"),
+                    @ApiResponse(responseCode = "400", description = "Json Incorreto",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = Produto.class))),
+                    @ApiResponse(responseCode = "500", description = "venda não encontrado")
+            })
+    @PostMapping("/editVenda")
+    public Pessoa editVenda(@RequestBody Pessoa pessoa){
+        return pessoaService.editVenda(pessoa);
+    }
 }
