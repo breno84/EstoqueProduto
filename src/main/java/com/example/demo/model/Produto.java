@@ -28,7 +28,7 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

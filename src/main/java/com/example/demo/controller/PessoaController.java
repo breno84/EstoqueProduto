@@ -37,7 +37,7 @@ public class PessoaController {
             })
     @GetMapping("/{id}")
     public Optional<Pessoa> getVendasById(@PathVariable Long id){
-        return pessoaService.getPessoById(id);
+        return pessoaService.getVendaById(id);
     }
 
     @Operation(summary = "Criacao de vendas",

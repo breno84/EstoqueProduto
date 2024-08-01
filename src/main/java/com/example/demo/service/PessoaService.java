@@ -30,7 +30,7 @@ public class PessoaService {
         return pessoaRepository.findAllByOrderByIdDesc();
     }
 
-    public Optional<Pessoa> getPessoById(Long id){
+    public Optional<Pessoa> getVendaById(Long id){
         return pessoaRepository.findById(id);
     }
 
@@ -60,8 +60,16 @@ public class PessoaService {
     }
 
     public Pessoa editVenda(Pessoa pessoa){
-        pessoaRepository.saveAndFlush(pessoa);
+        if(pessoa.getDataVenda()==null){
+            pessoa.setDataVenda(new Date());
+        }
+        if(pessoa.getProduto().getId() == null || pessoa.getProduto().getId() == 0){
+            Pessoa pessoa1 = pessoaRepository.findById(pessoa.getId()).orElseThrow(() -> new RuntimeException("Venda não encontrado"));;
+            pessoa.setProduto(pessoa1.getProduto());
+        }
 
+        pessoaRepository.saveAndFlush(pessoa);
+        logger.info("jksahdkljashkjdahsjkldasjkdhaskjldh");
         Pessoa pessoa1 = pessoaRepository.findById(pessoa.getId()).
                 orElseThrow(() -> new RuntimeException("Pessoa não encontrado"));
 
